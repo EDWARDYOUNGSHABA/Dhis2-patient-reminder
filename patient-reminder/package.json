@@ -1,0 +1,24 @@
+{
+  "name": "patient-reminder",
+  "version": "1.0.0",
+  "description": "",
+  "license": "BSD-3-Clause",
+  "private": true,
+  "scripts": {
+    "build": "d2-app-scripts build",
+    "start": "d2-app-scripts start",
+    "test": "d2-app-scripts test",
+    "deploy": "d2-app-scripts deploy"
+  },
+  "devDependencies": {
+    "@dhis2/cli-app-scripts": "^11.7.5"
+  },
+  "dependencies": {
+    "@dhis2/app-runtime": "^3.11.2",
+    "@dhis2/app-runtime-adapter-d2": "^1.1.0",
+    "@dhis2/ui": "^9.13.0",
+    "d2": "^31.10.2",
+    "react-icons": "^5.3.0",
+    "react-router-dom": "^6.28.0"
+  }
+}

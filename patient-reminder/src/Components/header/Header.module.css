@@ -1,0 +1,65 @@
+/* Header.module.css */
+
+/* Style for active link */
+.active {
+    font-weight: bold;
+    color: #1e40af;
+  }
+  
+  /* Ensure the NavBar is responsive */
+  @media (max-width: 768px) {
+    .dhis2-ui-nav-bar {
+      flex-direction: column;  /* Stack items vertically */
+      text-align: center;
+    }
+  
+    .dhis2-ui-nav-list {
+      display: flex;
+      flex-direction: column;  /* Stack items vertically */
+    }
+  
+    .dhis2-ui-nav-item {
+      padding: 8px 0;
+    }
+  }
+  
+  /* Basic styling for the NavBar to ensure spacing and alignment */
+  .dhis2-ui-nav-bar {
+    background-color: #f8f8f8;
+    padding: 10px;
+  }
+  
+  .dhis2-ui-nav-item {
+    margin: 0 10px;
+  }
+  
+  .dhis2-ui-dropdown {
+    background-color: #ffffff;
+  }
+  
+  /* Styling the buttons */
+  .dhis2-ui-button {
+    padding: 8px 16px;
+    border-radius: 4px;
+    background-color: #4b6cc1;
+    color: white;
+    border: none;
+  }
+  
+  .dhis2-ui-button:hover {
+    background-color: #3a5a91;
+  }
+  
+  .dhis2-ui-dropdown-menu {
+    min-width: 150px;
+  }
+  
+  /* Styling for the dropdown items */
+  .dhis2-ui-menu-item {
+    padding: 8px 16px;
+  }
+  
+  .dhis2-ui-menu-item:hover {
+    background-color: #e4e4e4;
+  }
+  
