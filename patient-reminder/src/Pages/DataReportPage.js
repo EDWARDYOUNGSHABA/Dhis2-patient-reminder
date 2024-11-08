@@ -1,6 +1,7 @@
 import React from "react";
 import Report from "../Components/datareport/Report";
 import { CenteredContent, Box } from '@dhis2/ui';
+import './General.css';
 
 function DataReportPage() {
     return (

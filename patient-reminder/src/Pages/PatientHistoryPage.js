@@ -1,6 +1,7 @@
 import React from "react";
 import PatientHistory from "../Components/patientdata/PatientHistory";
 import { CenteredContent, Box } from '@dhis2/ui';
+import './General.css';
 
 function PatientHistoryPage(){
     return(

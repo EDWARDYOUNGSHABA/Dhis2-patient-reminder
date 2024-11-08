@@ -1,6 +1,7 @@
 import React from 'react';
 import AboutUs from '../Components/aboutus/AboutUs';
 import { CenteredContent, Box } from '@dhis2/ui';
+import './General.css';
 
 const AboutUsPage = () => {
     return (
