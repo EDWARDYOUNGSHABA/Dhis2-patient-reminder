@@ -2,7 +2,6 @@ import React from 'react';
 import SignIn from './Pages/SignIn';
 import SignUp from './Pages/SignUp';
 import DataReportPage from './Pages/DataReportPage';
-import Header from './Components/header/Header';
 import PatientHistoryPage from './Pages/PatientHistoryPage';
 import PatientMessaging from './Pages/PatientMessaging';
 import PatientRegistrationPage from './Pages/PatientRegistrationPage';
