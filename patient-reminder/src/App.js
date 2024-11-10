@@ -10,6 +10,7 @@ import HomePage from './Pages/HomePage';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { CenteredContent } from '@dhis2/ui';
 import Header from './Components/header/Header';
+import NotificationPage from './Pages/NotificationPage';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
             <Route path='/registration' element={<PatientRegistrationPage />} />
             <Route path='/report' element={<DataReportPage />} />
             <Route path='/aboutus' element={<AboutUsPage />} />
+            <Route path='/notification' element={<NotificationPage />} />
             <Route path='/signin' element={<SignIn />} />
             <Route path='/signup' element={<SignUp />} />
           </Routes>

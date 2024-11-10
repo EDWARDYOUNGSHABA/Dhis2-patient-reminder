@@ -1,5 +1,3 @@
-/* Header.css */
-
 /* Header styling */
 .header {
   display: flex;
@@ -13,7 +11,7 @@
 .logo-section {
   display: flex;
   align-items: center;
-  gap: px;
+  gap: 10px;
 }
 
 .home-link {
@@ -44,7 +42,23 @@
 }
 
 .nav-links a:hover, .dropdown-button:hover {
-  color: #a3bffa;
+  color: #a3bffa;  /* Matches hover effect */
+}
+
+/* Update the dropdown button color to match navigation link styling */
+.dropdown-button {
+  background-color: transparent; /* Ensure it's consistent with the navigation links */
+  border: none;  /* Remove any default borders */
+  padding: 8px 16px;
+  font-size: 16px;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+/* Apply a hover effect to the dropdown button, like the navigation links */
+.dropdown-button:hover {
+  background-color: #374151; /* Darker shade for hover */
 }
 
 /* Dropdown menu styling */
