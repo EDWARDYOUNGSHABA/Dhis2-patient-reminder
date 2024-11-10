@@ -9,11 +9,13 @@ import AboutUsPage from './Pages/AboutUsPage';
 import HomePage from './Pages/HomePage';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { CenteredContent } from '@dhis2/ui';
+import Header from './Components/header/Header';
 
 function App() {
   return (
     <div>
-      <BrowserRouter>        
+      <BrowserRouter> 
+      <Header/>       
         <CenteredContent>
           <Routes>
             <Route path='/' element={<HomePage />} />            
