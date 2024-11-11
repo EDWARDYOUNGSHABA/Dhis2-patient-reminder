@@ -1,6 +1,7 @@
 import React from "react";
 import Home from "../Components/home/Home";
 import { CenteredContent, Box } from '@dhis2/ui';
+import './General.css';
 
 function HomePage() {
     return (

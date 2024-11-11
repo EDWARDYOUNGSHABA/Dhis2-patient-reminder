@@ -1,6 +1,7 @@
 import React from "react";
 import Messaging from '../Components/patientmessaging/Messaging';
 import { CenteredContent, Box } from '@dhis2/ui';
+import './General.css';
 
 function PatientMessaging(){
     return(

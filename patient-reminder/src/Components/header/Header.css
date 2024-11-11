@@ -1,0 +1,159 @@
+/* Header styling */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 32px;
+  background-color: #1f2937; /* Dark background for the header */
+  color: white;
+}
+
+.logo-section {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.home-link {
+  display: flex;
+  align-items: center;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: white;
+  text-decoration: none;
+}
+
+.home-icon {
+  font-size: 1.5rem;
+}
+
+/* Navigation links styling */
+.nav-links {
+  display: flex;
+  gap: 32px;
+}
+
+.nav-links a, .dropdown-button {
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+  transition: color 0.2s;
+  padding: 8px 16px;
+}
+
+.nav-links a:hover, .dropdown-button:hover {
+  color: #a3bffa;  /* Matches hover effect */
+}
+
+/* Update the dropdown button color to match navigation link styling */
+.dropdown-button {
+  background-color: transparent; /* Ensure it's consistent with the navigation links */
+  border: none;  /* Remove any default borders */
+  padding: 8px 16px;
+  font-size: 16px;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+/* Apply a hover effect to the dropdown button, like the navigation links */
+.dropdown-button:hover {
+  background-color: #374151; /* Darker shade for hover */
+}
+
+/* Dropdown menu styling */
+.dropdown {
+  position: relative;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #1f2937; /* Match header background */
+  color: white;
+  border-radius: 6px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  z-index: 10;
+}
+
+.dropdown-menu a {
+  display: block;
+  padding: 8px 16px;
+  color: inherit;
+  text-decoration: none;
+  transition: background-color 0.2s;
+}
+
+.dropdown-menu a:hover {
+  background-color: #374151; /* Darker shade for hover */
+}
+
+/* Mobile menu styling */
+.mobile-menu {
+  display: none;
+}
+
+.menu-icon {
+  width: 24px;
+  height: 24px;
+  color: white;
+}
+
+.mobile-dropdown {
+  position: absolute;
+  right: 0;
+  background-color: #1f2937;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 6px;
+  overflow: hidden;
+  z-index: 10;
+}
+
+.mobile-dropdown a {
+  display: block;
+  padding: 8px 16px;
+  color: white;
+  text-decoration: none;
+}
+
+.mobile-dropdown a:hover {
+  background-color: #374151;
+}
+
+/* Profile icon and menu styling */
+.profile {
+  position: relative;
+}
+
+.profile-img {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  border: 2px solid white;
+  cursor: pointer;
+  margin-left: 24px;
+}
+
+.profile-menu {
+  position: absolute;
+  right: 0;
+  background-color: #1f2937;
+  color: white;
+  border-radius: 6px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  z-index: 10;
+}
+
+.profile-menu a {
+  display: block;
+  padding: 8px 16px;
+  color: inherit;
+  text-decoration: none;
+}
+
+.profile-menu a:hover {
+  background-color: #374151;
+}

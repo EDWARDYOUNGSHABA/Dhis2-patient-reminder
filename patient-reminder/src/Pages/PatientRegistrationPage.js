@@ -1,6 +1,7 @@
 import React from "react";
 import Registration from '../Components/patientregistration/Registration';
 import { CenteredContent, Box } from '@dhis2/ui';
+import './General.css';
 
 function PatientRegistration(){
     return(

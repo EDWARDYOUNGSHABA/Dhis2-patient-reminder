@@ -1,0 +1,25 @@
+/* Make sure the body or the root element fills the viewport */
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #110a23; /* Background color for the page */
+}
+
+/* Center the content vertically and horizontally */
+.data-report-page {
+    width: 100%;
+    display: flex;
+    justify-content: center; /* Centers content horizontally */
+    align-items: center;     /* Centers content vertically */
+    min-height: 100vh;       /* Ensures full height of the viewport */
+}
+
+/* Additional styles for the content box */
+.Box {
+    border-radius: 8px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+    background-color: white;
+}
