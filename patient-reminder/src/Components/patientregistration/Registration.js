@@ -15,7 +15,7 @@ const Registration = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prevData) => ({
+    setFormData((prevData) => ( {
       ...prevData,
       [name]: value,
     }));
@@ -29,7 +29,7 @@ const Registration = () => {
 
   return (
     <div className="form-container">
-      <h2 className="form-title">Registration Form</h2>
+          <h2 className="form-title">Registration Form</h2>
       <form onSubmit={handleSubmit}>
         <div className="form-group">
           <label className="label">Name:</label>
