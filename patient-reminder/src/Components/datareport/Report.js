@@ -1,55 +1,108 @@
-import React, { useState } from 'react';
+import React, { useMemo } from 'react';
+import { useTable, useSortBy, usePagination } from 'react-table';
+import patientData from './PatientData.json';
 import './Report.css';
-import { CenteredContent, NoticeBox, colors } from '@dhis2/ui';
 
-// Increased sample registered patients data
-const registeredPatients = [
-    { id: 1, name: 'John Doe', age: 29, registrationDate: '2024-08-01', program: 'Immunization' },
-    { id: 2, name: 'Jane Smith', age: 34, registrationDate: '2024-09-10', program: 'Nutrition' },
-    { id: 3, name: 'Samuel Green', age: 45, registrationDate: '2024-07-25', program: 'Malaria' },
-    { id: 4, name: 'Emily White', age: 30, registrationDate: '2024-08-15', program: 'Immunization' },
-    { id: 5, name: 'David Brown', age: 50, registrationDate: '2024-09-05', program: 'Nutrition' },
-    { id: 6, name: 'Olivia Blue', age: 24, registrationDate: '2024-06-21', program: 'Immunization' },
-    { id: 7, name: 'Chris Gray', age: 38, registrationDate: '2024-05-12', program: 'Nutrition' },
-    { id: 8, name: 'Sophie Black', age: 28, registrationDate: '2024-04-30', program: 'Malaria' },
-    { id: 9, name: 'Aaron Red', age: 40, registrationDate: '2024-09-15', program: 'Immunization' },
-    { id: 10, name: 'Mia Yellow', age: 33, registrationDate: '2024-07-09', program: 'Nutrition' },
-    { id: 11, name: 'Ethan Green', age: 55, registrationDate: '2024-02-14', program: 'Malaria' },
-    { id: 12, name: 'Sophia White', age: 27, registrationDate: '2024-01-30', program: 'Immunization' },
-    { id: 13, name: 'James Purple', age: 60, registrationDate: '2024-03-20', program: 'Nutrition' },
-    { id: 14, name: 'Lily Blue', age: 23, registrationDate: '2024-10-05', program: 'Malaria' },
-    { id: 15, name: 'Jack Orange', age: 42, registrationDate: '2024-05-01', program: 'Immunization' }
-];
+const PatientReport = () => {
+    const data = useMemo(() => patientData, []);
 
-const Report = () => {
-    const [patients] = useState(registeredPatients); // Set initial patient list state
+    const columns = useMemo(
+        () => [
+            { Header: 'ID', accessor: 'id' },
+            { Header: 'Name', accessor: 'name' },
+            { Header: 'Age', accessor: 'age' },
+            { Header: 'Gender', accessor: 'gender' },
+            { Header: 'Registration Date', accessor: 'registrationDate' },
+        ],
+        []
+    );
+
+    const {
+        getTableProps,
+        getTableBodyProps,
+        headerGroups,
+        page,
+        prepareRow,
+        canPreviousPage,
+        canNextPage,
+        pageOptions,
+        nextPage,
+        previousPage,
+        setPageSize,
+        state: { pageIndex, pageSize },
+    } = useTable(
+        { columns, data, initialState: { pageIndex: 0, pageSize: 5 } },
+        useSortBy,
+        usePagination
+    );
 
     return (
-        <CenteredContent>
-            
-            {/* Table to display registered patients with custom CSS class */}
-            <table className="report-table">
+        
+        <div className="report-container">
+            <h1 className="report-header">Registered Patients</h1>
+            <p>Total Patients: {data.length}</p>
+
+            <table {...getTableProps()} className="report-table">
                 <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Age</th>
-                        <th>Registration Date</th>
-                        <th>Program</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {patients.map(patient => (
-                        <tr key={patient.id}>
-                            <td>{patient.name}</td>
-                            <td>{patient.age}</td>
-                            <td>{patient.registrationDate}</td>
-                            <td>{patient.program}</td>
+                    {headerGroups.map(headerGroup => (
+                        <tr {...headerGroup.getHeaderGroupProps()}>
+                            {headerGroup.headers.map(column => (
+                                <th {...column.getHeaderProps(column.getSortByToggleProps())}>
+                                    {column.render('Header')}
+                                    <span>
+                                        {column.isSorted
+                                            ? column.isSortedDesc
+                                                ? ' 🔽'
+                                                : ' 🔼'
+                                            : ''}
+                                    </span>
+                                </th>
+                            ))}
                         </tr>
                     ))}
+                </thead>
+                <tbody {...getTableBodyProps()}>
+                    {page.map(row => {
+                        prepareRow(row);
+                        return (
+                            <tr {...row.getRowProps()}>
+                                {row.cells.map(cell => (
+                                    <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
+                                ))}
+                            </tr>
+                        );
+                    })}
                 </tbody>
             </table>
-        </CenteredContent>
-    );
-}
 
-export default Report;
+            {/* Pagination Controls */}
+            <div className="pagination">
+                <button onClick={() => previousPage()} disabled={!canPreviousPage}>
+                    Previous
+                </button>
+                <span>
+                    Page{' '}
+                    <strong>
+                        {pageIndex + 1} of {pageOptions.length}
+                    </strong>{' '}
+                </span>
+                <button onClick={() => nextPage()} disabled={!canNextPage}>
+                    Next
+                </button>
+                <select
+                    value={pageSize}
+                    onChange={e => setPageSize(Number(e.target.value))}
+                >
+                    {[5, 10, 15, 20].map(size => (
+                        <option key={size} value={size}>
+                            Show {size}
+                        </option>
+                    ))}
+                </select>
+            </div>
+        </div>
+        
+    );
+};
+
+export default PatientReport;
