@@ -110,6 +110,9 @@ const Registration = () => {
         <button type="submit" className="button">
           Register
         </button>
+        
+        <button type="submit" className="button">view</button>
+
       </form>
     </div>
   );
