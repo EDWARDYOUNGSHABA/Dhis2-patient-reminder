@@ -4,7 +4,7 @@ import './General.css';
 
 function DataReportPage() {
     return (
-        <div>
+        <div className="data-report-page">
             <Report />
         </div>
     );
