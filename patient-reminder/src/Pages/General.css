@@ -1,25 +1,126 @@
-/* Make sure the body or the root element fills the viewport */
-html, body {
-    height: 100%;
-    margin: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #110a23; /* Background color for the page */
+/* General Reset */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-/* Center the content vertically and horizontally */
-.data-report-page {
-    width: 100%;
-    display: flex;
-    justify-content: center; /* Centers content horizontally */
-    align-items: center;     /* Centers content vertically */
-    min-height: 100vh;       /* Ensures full height of the viewport */
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f4f4f4; /* Light gray background for overall pages */
+  color: #333; /* Dark gray text for readability */
+  line-height: 1.6;
+  min-height: 100vh;
 }
 
-/* Additional styles for the content box */
-.Box {
-    border-radius: 8px;
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
-    background-color: white;
+/* Centralized Content */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh; /* Full viewport height */
+  padding: 20px;
+  text-align: center;
+}
+
+/* Attractive Page Styles */
+.page-title {
+  font-size: 2.5rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #2c3e50; /* Darker color for titles */
+}
+
+.page-description {
+  font-size: 1.2rem;
+  color: #7f8c8d; /* Softer gray color for description text */
+  margin-bottom: 40px;
+}
+
+/* Section for form or content */
+.section {
+  background-color: #fff; /* White background for main content */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+  padding: 30px;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 600px; /* Ensures that the content doesn’t stretch too wide */
+  margin-top: 20px;
+}
+
+/* Form elements and buttons */
+input,
+textarea,
+button {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  font-size: 1rem;
+}
+
+input:focus,
+textarea:focus,
+button:focus {
+  outline: none;
+  border-color: #3498db; /* Focused input border */
+}
+
+/* Styling the button */
+button {
+  background-color: #3498db; /* Blue button */
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #2980b9; /* Darker blue on hover */
+}
+
+/* Text Centering for All Pages */
+.text-center {
+  text-align: center;
+}
+
+/* Background Styles */
+.bg-primary {
+  background-color: #3498db; /* Blue background for important sections */
+}
+
+.text-white {
+  color: white;
+}
+
+/* Margin and Padding Utilities */
+.mb-20 {
+  margin-bottom: 20px;
+}
+
+.mt-20 {
+  margin-top: 20px;
+}
+
+.p-5 {
+  padding: 20px;
+}
+
+/* Container for smaller screens */
+@media (max-width: 768px) {
+  .container {
+    padding: 10px;
+  }
+
+  .page-title {
+    font-size: 2rem;
+  }
+
+  .section {
+    width: 90%;
+    padding: 20px;
+  }
 }

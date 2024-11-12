@@ -1,15 +1,12 @@
-import React from "react";
+import React from 'react';
 import Messaging from '../Components/patientmessaging/Messaging';
-import { CenteredContent, Box } from '@dhis2/ui';
 import './General.css';
 
-function PatientMessaging(){
-    return(
-        <CenteredContent>
-            <Box padding="24px" maxWidth="800px" background="white" shadow>
-                <Messaging />
-            </Box>
-        </CenteredContent>
+function PatientMessaging() {
+    return (
+        <div>
+            <Messaging/>
+        </div>
     );
 }
 
