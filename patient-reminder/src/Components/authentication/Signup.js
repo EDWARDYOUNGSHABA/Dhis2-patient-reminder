@@ -224,7 +224,7 @@ const Signup = () => {
                         fontWeight: 'bold',
                         padding: '10px',
                         marginTop: '20px', 
-                        backgroundColor: colors.green600,
+                        backgroundColor: '#3498DB',
                         border: 'none',
                         borderRadius: '4px',
                         color: 'white',
