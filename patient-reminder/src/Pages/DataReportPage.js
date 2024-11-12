@@ -1,16 +1,107 @@
-import React from "react";
-import Report from "../Components/datareport/Report";
-import { CenteredContent, Box } from '@dhis2/ui';
-import './General.css';
+import React, { useState } from 'react';
+import './DataReportPage.css';
 
 function DataReportPage() {
-    return (
-        <CenteredContent>
-            <Box padding="24px" maxWidth="800px" background="white" shadow>
-                <Report />
-            </Box>
-        </CenteredContent>
-    );
+  const [patients, setPatients] = useState([
+    {
+      patientName: '',
+      dayVisited: '',
+      typeOfTreatment: '',
+      doctorsName: '',
+      state: ''
+    },
+  ]);
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    // Handle form submission logic here
+    console.log(patients);
+  };
+
+  return (
+    <div className="data-report-container">
+      <h2 className="data-report-title">Data Report</h2>
+      <form onSubmit={handleSubmit}>
+        <div className="table-container">
+          <table className="data-report-table">
+            <thead>
+              <tr>
+                <th>Patient name</th>
+                <th>Day Visited</th>
+                <th>Type of treatment</th>
+                <th>Doctors name</th>
+                <th>State</th>
+              </tr>
+            </thead>
+            <tbody>
+              {[...Array(8)].map((_, index) => (
+                <tr key={index}>
+                  <td>
+                    <input
+                      type="text"
+                      placeholder="Enter patient name"
+                      onChange={(e) => {
+                        const updatedPatients = [...patients];
+                        updatedPatients[index].patientName = e.target.value;
+                        setPatients(updatedPatients);
+                      }}
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="text"
+                      placeholder="Enter visit date"
+                      onChange={(e) => {
+                        const updatedPatients = [...patients];
+                        updatedPatients[index].dayVisited = e.target.value;
+                        setPatients(updatedPatients);
+                      }}
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="text"
+                      placeholder="Enter treatment type"
+                      onChange={(e) => {
+                        const updatedPatients = [...patients];
+                        updatedPatients[index].typeOfTreatment = e.target.value;
+                        setPatients(updatedPatients);
+                      }}
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="text"
+                      placeholder="Enter doctor's name"
+                      onChange={(e) => {
+                        const updatedPatients = [...patients];
+                        updatedPatients[index].doctorsName = e.target.value;
+                        setPatients(updatedPatients);
+                      }}
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="text"
+                      placeholder="Enter state"
+                      onChange={(e) => {
+                        const updatedPatients = [...patients];
+                        updatedPatients[index].state = e.target.value;
+                        setPatients(updatedPatients);
+                      }}
+                    />
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <div className="button-container">
+          <button type="submit" className="enter-button">Enter</button>
+        </div>
+      </form>
+    </div>
+  );
 }
 
 export default DataReportPage;
