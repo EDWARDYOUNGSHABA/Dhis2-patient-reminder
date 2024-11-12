@@ -94,7 +94,7 @@ const Signin = () => {
                         fontWeight: 'bold',
                         width: '100%',
                         padding: '10px',
-                        backgroundColor: colors.green600
+                        backgroundColor: '#3498DB'
                     }}>
                     Login
                 </Button>
