@@ -17,6 +17,7 @@
     "@dhis2/app-runtime": "^3.11.2",
     "@dhis2/app-runtime-adapter-d2": "^1.1.0",
     "@dhis2/ui": "^9.13.0",
+    "@tanstack/react-table": "^8.20.5",
     "chart.js": "^4.4.6",
     "d2": "^31.10.2",
     "react-chartjs-2": "^5.2.0",
