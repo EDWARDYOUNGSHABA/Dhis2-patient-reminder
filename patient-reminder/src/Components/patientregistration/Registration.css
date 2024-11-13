@@ -57,12 +57,12 @@
   }
   
   .button:hover {
-    background-color: #38a169;
+    background-color: #3498DB;
   }
   
   .button:focus {
         
-    outline: 2px solid #38a169;
-    border-color: #38a169;
+    outline: 2px solid #3498DB;
+    border-color: #3498DB;
   }
   
