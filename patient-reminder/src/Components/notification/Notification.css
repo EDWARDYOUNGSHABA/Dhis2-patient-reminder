@@ -1,0 +1,90 @@
+/* Notifications Container */
+.notifications-container {
+    padding: 30px;
+    background-color: #f4f8fc;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    max-width: 900px;
+    margin: 20px auto;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: center;
+  }
+  
+  .notifications-header {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+    font-weight: bold;
+  }
+  
+  .no-notifications {
+    color: #888;
+    font-size: 16px;
+    font-weight: 500;
+  }
+  
+  /* General Notification Style */
+  .notification {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  .notification:hover {
+    transform: scale(1.02);
+  }
+  
+  /* Notification Message */
+  .notification-message {
+    font-size: 1rem;
+    color: #333;
+    font-weight: 600;
+    text-align: left;
+    flex: 1;
+  }
+  
+  /* Notification Date */
+  .notification-date {
+    font-size: 0.85rem;
+    color: #777;
+    font-weight: 400;
+    text-align: right;
+  }
+  
+  /* Info Notification */
+  .info-notification {
+    border-left: 5px solid #3498db;
+    background-color: #eaf4ff;
+  }
+  
+  /* Reminder Notification */
+  .reminder-notification {
+    border-left: 5px solid #f39c12;
+    background-color: #fff4e5;
+  }
+  
+  /* Confirmation Notification */
+  .confirmation-notification {
+    border-left: 5px solid #2ecc71;
+    background-color: #e6f9e6;
+  }
+  
+  /* Alert Notification */
+  .alert-notification {
+    border-left: 5px solid #e74c3c;
+    background-color: #fbe6e6;
+  }
+  
+  /* Missed Notification */
+  .missed-notification {
+    border-left: 5px solid #9b59b6;
+    background-color: #f5e6f5;
+  }
+  

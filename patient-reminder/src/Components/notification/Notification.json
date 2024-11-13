@@ -1,0 +1,38 @@
+[
+    {
+      "id": 1,
+      "message": "You have a new appointment with Patient John Doe scheduled for 10:00 AM tomorrow.",
+      "type": "info",
+      "doctor": "Dr. Smith",
+      "date": "2024-11-14T10:00:00Z"
+    },
+    {
+      "id": 2,
+      "message": "Reminder: You have an appointment with Patient Jane Doe at 2:30 PM today.",
+      "type": "reminder",
+      "doctor": "Dr. Smith",
+      "date": "2024-11-14T14:30:00Z"
+    },
+    {
+      "id": 3,
+      "message": "Appointment confirmation: Your appointment with Patient Mark Taylor is confirmed for 3:00 PM today.",
+      "type": "confirmation",
+      "doctor": "Dr. Smith",
+      "date": "2024-11-14T15:00:00Z"
+    },
+    {
+      "id": 4,
+      "message": "Alert: Your appointment with Patient Emily Davis was rescheduled to 2:00 PM tomorrow.",
+      "type": "alert",
+      "doctor": "Dr. Smith",
+      "date": "2024-11-15T14:00:00Z"
+    },
+    {
+      "id": 5,
+      "message": "You missed your appointment with Patient Robert Lee at 9:00 AM today.",
+      "type": "missed",
+      "doctor": "Dr. Smith",
+      "date": "2024-11-14T09:00:00Z"
+    }
+  ]
+  

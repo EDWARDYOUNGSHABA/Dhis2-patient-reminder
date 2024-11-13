@@ -1,0 +1,160 @@
+/* General Container Styles */
+.patient-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #f9fafb;
+    min-height: 100vh;
+    padding: 40px 20px;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Title */
+.patient-title {
+    font-size: 2.2rem; /* Increased title size */
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 30px;
+}
+
+/* Table Container */
+.table-container {
+    width: 100%;
+    max-width: 1100px; /* Increased max-width for a larger table */
+    margin-bottom: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    overflow-x: auto;
+    padding: 25px; /* Increased padding for more space */
+}
+
+/* Table Styling */
+.patient-table, .history-table {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.patient-table th,
+.history-table th,
+.patient-table td,
+.history-table td {
+    padding: 15px 18px; /* Increased padding for larger cells */
+    text-align: left;
+    font-size: 1.1rem; /* Slightly increased font size */
+    color: #555;
+}
+
+.patient-table th, .history-table th {
+    background-color: #3498db;
+    color: #fff;
+}
+
+.patient-table tr:nth-child(even), .history-table tr:nth-child(even) {
+    background-color: #f4f7fa;
+}
+
+.patient-table input, .history-table td {
+    width: 100%;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    box-sizing: border-box;
+    font-size: 1.1rem; /* Slightly increased input font size */
+    transition: border-color 0.3s ease;
+}
+
+.patient-table input:focus {
+    outline: none;
+    border-color: #3498db;
+}
+
+/* Button Styling */
+.button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 25px; /* Increased margin for spacing */
+}
+
+.enter-button {
+    padding: 14px 35px; /* Increased button size */
+    font-size: 1.2rem; /* Larger font size for the button */
+    font-weight: 600;
+    background-color: #3498db;
+    color: #fff;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.enter-button:hover {
+    background-color: #2980b9;
+}
+
+.enter-button:active {
+    transform: scale(0.98);
+}
+
+/* Patient Data History Table */
+.patient-data-history {
+    width: 100%;
+    max-width: 1100px; /* Increased max-width for consistency */
+    margin-top: 40px;
+}
+
+.history-title {
+    font-size: 2rem; /* Increased title size */
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 25px; /* Increased margin */
+}
+
+.history-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.history-table th,
+.history-table td {
+    padding: 15px; /* Increased padding for larger cells */
+    text-align: left;
+}
+
+.history-table th {
+    background-color: #3498db;
+    color: #fff;
+}
+
+.history-table td {
+    background-color: #f4f7fa;
+}
+
+.history-table tr:nth-child(even) {
+    background-color: #fafafa;
+}
+
+.history-table td {
+    font-size: 1.1rem; /* Slightly increased font size for table content */
+    color: #555;
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+    .patient-table {
+        font-size: 1rem; /* Slightly reduced font size for small screens */
+    }
+
+    .patient-title {
+        font-size: 1.9rem; /* Adjusted title size for small screens */
+    }
+
+    .enter-button {
+        width: 100%;
+        max-width: 250px; /* Increased max width for better button size */
+    }
+}

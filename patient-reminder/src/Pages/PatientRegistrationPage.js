@@ -1,7 +1,6 @@
 import React from 'react';
 import Registration from '../Components/patientregistration/Registration';
-import './General.css';
-
+import './Universal.css';
 function PatientRegistration() {
     return (
         <div>

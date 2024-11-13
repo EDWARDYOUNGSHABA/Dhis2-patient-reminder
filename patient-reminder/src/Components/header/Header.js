@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { FaHome } from "react-icons/fa";
 import './Header.css';
 
@@ -7,14 +7,19 @@ function Header() {
     const [isServicesOpen, setIsServicesOpen] = useState(false);
     const [isProfileOpen, setIsProfileOpen] = useState(false);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [isAuthenticated, setIsAuthenticated] = useState(false);
     const profileRef = useRef(null);
     const servicesRef = useRef(null);
     const menuRef = useRef(null);
+    const navigate = useNavigate();
 
     const closeDelay = 1500;
     let profileTimeout, servicesTimeout;
 
     useEffect(() => {
+        // Check if the user is authenticated on component mount
+        setIsAuthenticated(!!localStorage.getItem('authToken'));
+
         const handleClickOutside = (event) => {
             if (
                 profileRef.current && !profileRef.current.contains(event.target) &&
@@ -41,6 +46,12 @@ function Header() {
         setIsProfileOpen(false);
         setIsServicesOpen(false);
         setIsMenuOpen(false);
+    };
+
+    const handleLogout = () => {
+        localStorage.removeItem('authToken');
+        setIsAuthenticated(false);
+        navigate('/signin');
     };
 
     return (
@@ -109,8 +120,14 @@ function Header() {
                 <img src="./asserts/images/fever.jpg" alt="Profile" className="profile-img" />
                 {isProfileOpen && (
                     <div className="profile-menu">
-                        <Link to="/signin" onClick={closeAllDropdowns}>Signin</Link>
-                        <Link to="/signup" onClick={closeAllDropdowns}>Signup</Link>
+                        {!isAuthenticated ? (
+                            <>
+                                <Link to="/signin" onClick={closeAllDropdowns}>Signin</Link>
+                                <Link to="/signup" onClick={closeAllDropdowns}>Signup</Link>
+                            </>
+                        ) : (
+                            <button onClick={handleLogout} className="logout-button">Logout</button>
+                        )}
                     </div>
                 )}
             </div>

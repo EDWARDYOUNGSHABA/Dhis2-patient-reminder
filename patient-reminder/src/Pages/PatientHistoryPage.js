@@ -1,7 +1,6 @@
 import React from "react";
 import PatientHistory from "../Components/patientdata/PatientHistory";
-import './General.css';
-
+import './Universal.css';
 function PatientHistoryPage() {
     return (
         <div>

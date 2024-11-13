@@ -1,11 +1,16 @@
+/* Form Container */
 .form-container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 2px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    background-color: #f9fdf9da;
-  }
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  background-color: #f9fdf9da;
+  padding-top: 45px;
+  margin-top: 30px; /* Added margin-top for spacing */
+  background-color: #fff; /* White background for a clean look */
+}
+
 
  
   
