@@ -1,6 +1,6 @@
 import React from 'react';
 import AboutUs from '../Components/aboutus/AboutUs';
-import './General.css';
+import './Universal.css';
 
 const AboutUsPage = () => {
     return (

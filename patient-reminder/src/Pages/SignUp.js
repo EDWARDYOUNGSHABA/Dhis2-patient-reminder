@@ -1,7 +1,6 @@
 import React from 'react';
 import Signup from '../Components/authentication/Signup';
-import './General.css';
-
+import './Universal.css';
 const SignUp = () => {
     return (
         <div className="container p-5">

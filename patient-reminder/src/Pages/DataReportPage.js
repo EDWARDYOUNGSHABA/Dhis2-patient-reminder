@@ -1,7 +1,6 @@
 import React from "react";
 import Report from "../Components/datareport/Report";
-import './General.css';
-
+import './Universal.css';
 function DataReportPage() {
     return (
         <div className="data-report-page">

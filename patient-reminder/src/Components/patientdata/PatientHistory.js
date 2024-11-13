@@ -1,94 +1,77 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import PatientData from './PatientData.json'; // Correctly import the JSON data
 import './PatientHistory.css';
 
 function PatientHistory() {
-  const [patients, setPatients] = useState([
-    {
-      patientName: '',
-      dayVisited: '',
-      typeOfTreatment: '',
-      doctorsName: '',
-      state: ''
-    },
-  ]);
+  const [patients, setPatients] = useState(PatientData); // Initialize with imported JSON data
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // Handle form submission logic here
-    console.log(patients);
+    console.log(JSON.stringify(patients, null, 2));
+  };
+
+  const handleChange = (index, field, value) => {
+    const updatedPatients = [...patients];
+    updatedPatients[index][field] = value;
+    setPatients(updatedPatients);
   };
 
   return (
     <div className="patient-container">
-      <h2 className="patient-title">Patient Statistics</h2>
+      <h2 className="patient-title">Patient History</h2>
       <form onSubmit={handleSubmit}>
         <div className="table-container">
           <table className="patient-table">
             <thead>
               <tr>
-                <th>Patient name</th>
+                <th>Patient Name</th>
                 <th>Day Visited</th>
-                <th>Type of treatment</th>
-                <th>Doctors name</th>
+                <th>Type of Treatment</th>
+                <th>Doctor's Name</th>
                 <th>State</th>
               </tr>
             </thead>
             <tbody>
-              {[...Array(8)].map((_, index) => (
+              {patients.map((patient, index) => (
                 <tr key={index}>
                   <td>
                     <input
                       type="text"
                       placeholder="Enter patient name"
-                      onChange={(e) => {
-                        const updatedPatients = [...patients];
-                        updatedPatients[index].patientName = e.target.value;
-                        setPatients(updatedPatients);
-                      }}
+                      value={patient.patientName}
+                      onChange={(e) => handleChange(index, 'patientName', e.target.value)}
                     />
                   </td>
                   <td>
                     <input
                       type="text"
                       placeholder="Enter visit date"
-                      onChange={(e) => {
-                        const updatedPatients = [...patients];
-                        updatedPatients[index].dayVisited = e.target.value;
-                        setPatients(updatedPatients);
-                      }}
+                      value={patient.dayVisited}
+                      onChange={(e) => handleChange(index, 'dayVisited', e.target.value)}
                     />
                   </td>
                   <td>
                     <input
                       type="text"
                       placeholder="Enter treatment type"
-                      onChange={(e) => {
-                        const updatedPatients = [...patients];
-                        updatedPatients[index].typeOfTreatment = e.target.value;
-                        setPatients(updatedPatients);
-                      }}
+                      value={patient.typeOfTreatment}
+                      onChange={(e) => handleChange(index, 'typeOfTreatment', e.target.value)}
                     />
                   </td>
                   <td>
                     <input
                       type="text"
                       placeholder="Enter doctor's name"
-                      onChange={(e) => {
-                        const updatedPatients = [...patients];
-                        updatedPatients[index].doctorsName = e.target.value;
-                        setPatients(updatedPatients);
-                      }}
+                      value={patient.doctorsName}
+                      onChange={(e) => handleChange(index, 'doctorsName', e.target.value)}
                     />
                   </td>
                   <td>
                     <input
                       type="text"
                       placeholder="Enter state"
-                      onChange={(e) => {
-                        const updatedPatients = [...patients];
-                        updatedPatients[index].state = e.target.value;
-                        setPatients(updatedPatients);
-                      }}
+                      value={patient.state}
+                      onChange={(e) => handleChange(index, 'state', e.target.value)}
                     />
                   </td>
                 </tr>
@@ -104,4 +87,4 @@ function PatientHistory() {
   );
 }
 
-export default PatientHistory; 
+export default PatientHistory;

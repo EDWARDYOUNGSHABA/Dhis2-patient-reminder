@@ -1,6 +1,5 @@
-
-
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Registration.css';
 
 const Registration = () => {
@@ -13,9 +12,11 @@ const Registration = () => {
     phoneNumber: '',
   });
 
+  const navigate = useNavigate();
+
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prevData) => ( {
+    setFormData((prevData) => ({
       ...prevData,
       [name]: value,
     }));
@@ -27,9 +28,13 @@ const Registration = () => {
     alert('Registration submitted successfully!');
   };
 
+  const handleViewClick = () => {
+    navigate('/patienthistory'); // Navigates to PatientHistoryPage
+  };
+
   return (
     <div className="form-container">
-          <h2 className="form-title">Registration Form</h2>
+      <h2 className="form-title">Registration Form</h2>
       <form onSubmit={handleSubmit}>
         <div className="form-group">
           <label className="label">Name:</label>
@@ -111,12 +116,12 @@ const Registration = () => {
           Register
         </button>
         
-        <button type="submit" className="button">view</button>
-
+        <button type="button" onClick={handleViewClick} className="button">
+          View
+        </button>
       </form>
     </div>
   );
 };
-
 
 export default Registration;

@@ -1,7 +1,6 @@
 import React from "react";
 import Home from "../Components/home/Home";
-import './General.css';
-
+import './Universal.css';
 function HomePage() {
     return (
         <div>

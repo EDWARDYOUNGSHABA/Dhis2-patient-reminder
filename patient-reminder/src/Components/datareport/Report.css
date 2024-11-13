@@ -1,71 +1,120 @@
+/* Container for the entire report */
 .report-container {
-    width: 90%;
-    margin: auto;
-    padding: 20px;
-    background-color: #f9f9f9;
+    background-color: #f8f9fa;
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.report-header {
-    font-size: 24px;
-    color: #333;
-    text-align: center;
-    margin-bottom: 10px;
-}
-
-.report-table {
+    padding: 30px; /* Increased padding for a larger layout */
+    margin: 20px auto;
+    max-width: 1300px; /* Increased max-width for a bigger table */
+  }
+  
+  /* Header styling */
+  .report-header {
+    font-size: 2.2rem; /* Slightly larger font for the header */
+    font-weight: 600;
+    color: #343a40;
+    margin-bottom: 15px; /* Increased margin for spacing */
+  }
+  
+  /* Total patients count */
+  .total-patients {
+    font-size: 1.2rem; /* Increased font size */
+    color: #495057;
+    margin-bottom: 25px; /* Increased margin */
+  }
+  
+  /* Table styling */
+  .table-wrapper {
+    overflow-x: auto;
+  }
+  
+  .report-table {
     width: 100%;
     border-collapse: collapse;
-    margin-bottom: 20px;
-}
-
-.report-table th, .report-table td {
-    padding: 12px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-size: 1rem; /* Increased font size for table content */
+  }
+  
+  .report-table th,
+  .report-table td {
+    padding: 15px 20px; /* Increased padding for larger table cells */
     text-align: left;
-    border: 1px solid #ddd;
-}
-
-.report-table th {
-    background-color: #4CAF50;
-    color: white;
+    border: 1px solid #dee2e6;
+  }
+  
+  .report-table th {
+    background-color: #007bff;
+    color: #fff;
+    font-weight: 600;
+  }
+  
+  .report-table tbody tr:nth-child(even) {
+    background-color: #f1f3f5;
+  }
+  
+  .report-table tbody tr:hover {
+    background-color: #e9ecef;
     cursor: pointer;
-}
-
-.report-table th:hover {
-    background-color: #45a049;
-}
-
-.report-table tr:nth-child(even) {
-    background-color: #f2f2f2;
-}
-
-.report-table tr:hover {
-    background-color: #ddd;
-}
-
-.pagination {
+  }
+  
+  .table-header {
+    position: relative;
+  }
+  
+  .table-header span {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  
+  .table-row:hover .table-cell {
+    background-color: #f8f9fa;
+  }
+  
+  .table-cell {
+    padding: 12px; /* Increased padding for larger cell content */
+    font-size: 1.1rem; /* Slightly larger font size for table cells */
+  }
+  
+  /* Pagination Controls */
+  .pagination-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 10px;
-}
-
-.pagination button {
-    background-color: #4CAF50;
+    margin-top: 30px; /* Increased margin for spacing */
+  }
+  
+  .pagination-button {
+    background-color: #007bff;
     color: white;
-    padding: 8px 12px;
     border: none;
+    padding: 10px 15px; /* Increased button size */
     border-radius: 4px;
+    font-size: 1.1rem; /* Larger font for the pagination buttons */
     cursor: pointer;
-}
-
-.pagination button:disabled {
-    background-color: #ccc;
+    transition: background-color 0.3s ease;
+  }
+  
+  .pagination-button:disabled {
+    background-color: #d6d8db;
     cursor: not-allowed;
-}
-
-.pagination select {
-    padding: 5px;
+  }
+  
+  .pagination-button:hover {
+    background-color: #0056b3;
+  }
+  
+  .pagination-info {
+    font-size: 1.1rem; /* Increased font size */
+    font-weight: 600;
+    color: #495057;
+  }
+  
+  .page-size-selector {
+    font-size: 1.1rem; /* Larger font size for page size selector */
+    padding: 10px;
+    border: 1px solid #ced4da;
     border-radius: 4px;
-}
+  }
+  
