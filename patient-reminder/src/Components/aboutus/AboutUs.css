@@ -1,59 +1,91 @@
+/* General Styles */
 .about-us {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 20px;
-    font-family: Arial, sans-serif;
-  }
-  
-  section {
-    margin-bottom: 40px;
-  }
-  
-  h2 {
-    color: #333;
-    font-size: 24px;
-    margin-bottom: 16px;
-    text-align: center;
-  }
-  
-  .who-we-are-content {
-    display: flex;
-    align-items: center;
-  }
-  
-  .who-we-are-content p {
-    flex: 1;
-  }
-  
-  .who-we-are-image {
-    width: 200px;
-    height: auto;
-    margin-left: 20px;
-    border-radius: 8px;
-  }
-  
-  .our-mission p {
-    font-size: 18px;
-  }
-  
-  .team-member-cards {
-    display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
-  }
-  
-  .team-member {
-    text-align: center;
-    flex: 1 1 150px;
-  }
-  
-  .team-member-image {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-  }
-  
-  .contact-details p {
-    font-size: 18px;
-  }
-  
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 20px;
+  background-color: #f4f7fa;
+}
+
+h2 {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+p {
+  font-size: 1rem;
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+/* Section Styles */
+.who-we-are, .our-mission, .team-members, .contact-details {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 30px;
+}
+
+.who-we-are-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Team Member Section */
+.team-members {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.team-member-cards {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.team-member {
+  text-align: center;
+  width: 250px;
+  padding: 10px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.team-member:hover {
+  transform: translateY(-10px);
+}
+
+.team-member-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+.team-member h3 {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.team-member p {
+  font-size: 1rem;
+  color: #555;
+}
+
+/* Contact Section */
+.contact-details {
+  text-align: center;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
