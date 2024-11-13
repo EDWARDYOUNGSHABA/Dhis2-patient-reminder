@@ -1,80 +1,129 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Signin = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
+    const navigate = useNavigate();
 
-    // This will handle input changes for username and password
     const handleInputChange = (setter) => (event) => {
         setter(event.target.value);
     };
 
-    // Prevent form submission reload
+    // Submission and credential validation
     const handleSubmit = (event) => {
         event.preventDefault();
 
-        // Validate to make sure both fields are not empty
+        // Ensure fields are not empty
         if (!username || !password) {
             setError('Both fields are required.');
             return;
         }
 
-        // If valid, proceed to submit the form
-        console.log('Form submitted with data:', { username, password });
+        // Check credentials
+        if (username === 'admin' && password === 'district') {
+            // Save token to localStorage to indicate the user is authenticated
+            localStorage.setItem('authToken', 'authenticated');
 
-        // Clear the form
-        setUsername('');
-        setPassword('');
-        setError('');
-    };
-
-    // Example color scheme (you can define your own or use a library like Material-UI or Tailwind CSS)
-    const colors = {
-        green500: '#4CAF50', // A shade of green
-        white: '#FFFFFF',    // White color
-        red: '#F44336',      // Red for errors
+            // Clear fields and error, then navigate to a protected route
+            setUsername('');
+            setPassword('');
+            setError('');
+            navigate('/'); // Navigate to the home page or any protected page
+        } else {
+            setError('Invalid username or password');
+        }
     };
 
     return (
-        <div style={{ backgroundColor: colors.green500, padding: '20px', borderRadius: '5px', maxWidth: '400px', margin: 'auto' }}>
-            <h1 style={{ color: colors.white, textAlign: 'center' }}>Sign In</h1>
-            
-            {error && <div style={{ color: colors.red, marginBottom: '15px', textAlign: 'center' }}>{error}</div>}
-            
-            <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column' }}>
-                <input
-                    type="text"
-                    placeholder="Username"
-                    value={username}
-                    onChange={handleInputChange(setUsername)}
-                    style={{ padding: '10px', margin: '10px 0', borderRadius: '4px', border: '1px solid #ccc' }}
-                />
-                <input
-                    type="password"
-                    placeholder="Password"
-                    value={password}
-                    onChange={handleInputChange(setPassword)}
-                    style={{ padding: '10px', margin: '10px 0', borderRadius: '4px', border: '1px solid #ccc' }}
-                />
+        <div
+            style={{
+                padding: '20px',
+                width: '600px',
+                borderRadius: '5px',
+                color: 'black',
+                textAlign: 'center',
+                margin: '50px auto',
+                border: '1px solid grey', 
+                boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)', 
+            }}
+        >
+            <form onSubmit={handleSubmit} style={{ padding: '20px', borderRadius: '10px', width: '500px', margin: '50px auto' }}>
+                <h2 style={{ color: 'black', textAlign: 'center' }}>Sign In</h2>
+
+                {error && (
+                    <div style={{ color: 'red', marginBottom: '10px' }}>
+                        {error}
+                    </div>
+                )}
+                
+                <label style={{ display: 'block', marginBottom: '10px', textAlign: 'start' }}>
+                    <div style={{ fontWeight: 'bold' }}>Username:</div>
+                    <input
+                        type="text"
+                        placeholder="Enter username"
+                        value={username}
+                        onChange={handleInputChange(setUsername)}
+                        required
+                        style={{
+                            width: '100%',
+                            padding: '8px',
+                            borderRadius: '5px',
+                            border: '1px solid black'
+                        }}
+                    />
+                </label>
+                
+                <label style={{ display: 'block', marginBottom: '10px', textAlign: 'start' }}>
+                    <div style={{ fontWeight: 'bold' }}>Password:</div>
+                    <input
+                        type="password"
+                        placeholder="********"
+                        value={password}
+                        onChange={handleInputChange(setPassword)}
+                        required
+                        style={{
+                            width: '100%',
+                            padding: '8px',
+                            borderRadius: '5px',
+                            border: '1px solid black'
+                        }}
+                    />
+                </label>
+                
                 <button
                     type="submit"
                     style={{
-                        padding: '10px', 
-                        marginTop: '10px', 
-                        backgroundColor: '#81C784', 
-                        border: 'none', 
-                        borderRadius: '4px', 
-                        color: 'white', 
+                        fontSize: '20px',
                         fontWeight: 'bold',
+                        width: '100%',
+                        padding: '10px',
+                        backgroundColor: '#3498DB',
+                        color: 'white',
+                        border: 'none',
+                        borderRadius: '5px',
                         cursor: 'pointer'
                     }}
                 >
-                    Sign In
+                    Login
                 </button>
+
+                <div style={{ marginTop: '20px' }}>
+                    <span>Don't have an account? </span>
+                    <a
+                        href="/signup" 
+                        style={{
+                            color: '#28a745',
+                            fontWeight: 'bold',
+                        }}
+                    >
+                        Create account
+                    </a>
+                </div>
             </form>
         </div>
     );
-}
+};
 
 export default Signin;

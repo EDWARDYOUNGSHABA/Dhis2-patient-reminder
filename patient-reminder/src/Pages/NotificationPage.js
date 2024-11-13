@@ -1,7 +1,6 @@
 import React from "react";
 import Notification from "../Components/notification/Notification";
-import './General.css';
-
+import './Universal.css';
 function NotificationPage() {
     return (
         <div>

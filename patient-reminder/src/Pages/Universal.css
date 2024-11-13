@@ -1,0 +1,146 @@
+/* Reset */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Body Styling */
+body, html {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background: linear-gradient(135deg, #f0f4f8, #e0e7ef);
+    color: #333;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 40px; /* Add top padding */
+}
+
+/* Global Container for Centering */
+.page-container {
+    width: 100%;
+    max-width: 800px; /* Set a max width to keep content narrow and centered */
+    padding: 20px;
+    margin: auto;
+    background: #fff;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    text-align: center;
+    min-height: 60vh; /* Ensures content isn't too compressed */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Typography */
+h1, h2, h3 {
+    color: #0066cc;
+    margin-bottom: 15px;
+}
+
+p {
+    color: #555;
+    margin-bottom: 15px;
+    line-height: 1.5;
+}
+
+/* Buttons */
+.button {
+    display: inline-block;
+    padding: 12px 20px;
+    margin-top: 10px;
+    background-color: #0066cc;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.button:hover {
+    background-color: #00509e;
+}
+
+/* Forms */
+.form-group {
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+input[type="text"],
+input[type="password"],
+textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    outline: none;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus,
+textarea:focus {
+    border-color: #0066cc;
+}
+
+/* Centered Links */
+.nav-link {
+    margin: 0 15px;
+    color: #0066cc;
+    font-weight: bold;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: #00509e;
+}
+
+/* Footer Styling */
+.footer {
+    margin-top: 30px;
+    text-align: center;
+    font-size: 14px;
+    color: #888;
+}
+
+.footer a {
+    color: #0066cc;
+    text-decoration: none;
+}
+
+.footer a:hover {
+    color: #00509e;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .page-container {
+        padding: 15px;
+        margin: 10px;
+    }
+
+    h1, h2, h3 {
+        font-size: 1.5em;
+    }
+
+    .nav-link {
+        margin: 0 10px;
+        font-size: 14px;
+    }
+
+    .button {
+        padding: 10px 18px;
+        font-size: 15px;
+    }
+}
