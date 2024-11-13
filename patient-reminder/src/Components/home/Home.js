@@ -4,7 +4,7 @@ import img1 from './images/confi.jpg';
 import img3 from './images/sponsor.jpg';
 import './Home.css';
 
-function Images() {
+function Home() {
   return (
     <div className="image-container">
       <img src={img2} alt="Project" className="logo"/>
@@ -37,4 +37,4 @@ function Images() {
   );
 }
 
-export default Images;
+export default Home;
