@@ -1,211 +1,132 @@
-<<<<<<< HEAD
-.patient-container {
+/* General Layout */
+.patient-history-wrapper {
+    margin: 0 auto;
     padding: 20px;
-  }
-  
-  .patient-title {
-    text-align: center;
-  }
-  
-  .table-container {
-    margin-top: 20px;
-  }
-  
-  .patient-table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  
-  .patient-table th,
-  .patient-table td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: left;
-  }
-  
-  .button-container {
-    display: flex;
-    justify-content: flex-end;
-    margin-top: 20px;
-  }
-  
-  .enter-button {
-    background-color: #890d33cb; 
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    cursor: pointer;
-    font-size: 16px;
-  }
-  
-  .enter-button:hover {
-    background-color:#890d33cb;
-  }
-  
-  .enter-button:active {
-    background-color: #890d33cb;
-    transform: translateY(2px);
-  }
-  
-=======
-/* General Container Styles */
-.patient-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-color: #f9fafb;
-    min-height: 100vh;
-    padding: 40px 20px;
-    font-family: 'Arial', sans-serif;
-}
-
-/* Title */
-.patient-title {
-    font-size: 2.2rem; /* Increased title size */
-    font-weight: 700;
-    color: #333;
-    margin-bottom: 30px;
-}
-
-/* Table Container */
-.table-container {
-    width: 100%;
-    max-width: 1100px; /* Increased max-width for a larger table */
-    margin-bottom: 20px;
-    background-color: #fff;
+    max-width: 1200px;
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
     border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    overflow-x: auto;
-    padding: 25px; /* Increased padding for more space */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-family: 'Roboto', sans-serif;
+}
+
+.patient-history-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.patient-history-header h1 {
+    font-size: 2.5rem;
+    color: #003366;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.patient-history-header .subtitle {
+    font-size: 1.1rem;
+    color: #666666;
+    margin: 0;
 }
 
 /* Table Styling */
-.patient-table, .history-table {
-    width: 100%;
-    border-collapse: collapse;
-    border-radius: 8px;
-    overflow: hidden;
+.table-wrapper {
+    overflow-x: auto; /* For responsive design */
 }
 
-.patient-table th,
-.history-table th,
-.patient-table td,
-.history-table td {
-    padding: 15px 18px; /* Increased padding for larger cells */
-    text-align: left;
-    font-size: 1.1rem; /* Slightly increased font size */
-    color: #555;
-}
-
-.patient-table th, .history-table th {
-    background-color: #3498db;
-    color: #fff;
-}
-
-.patient-table tr:nth-child(even), .history-table tr:nth-child(even) {
-    background-color: #f4f7fa;
-}
-
-.patient-table input, .history-table td {
-    width: 100%;
-    padding: 10px;
-    border-radius: 4px;
-    border: 1px solid #ddd;
-    box-sizing: border-box;
-    font-size: 1.1rem; /* Slightly increased input font size */
-    transition: border-color 0.3s ease;
-}
-
-.patient-table input:focus {
-    outline: none;
-    border-color: #3498db;
-}
-
-/* Button Styling */
-.button-container {
-    display: flex;
-    justify-content: center;
-    margin-top: 25px; /* Increased margin for spacing */
-}
-
-.enter-button {
-    padding: 14px 35px; /* Increased button size */
-    font-size: 1.2rem; /* Larger font size for the button */
-    font-weight: 600;
-    background-color: #3498db;
-    color: #fff;
-    border-radius: 4px;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-.enter-button:hover {
-    background-color: #2980b9;
-}
-
-.enter-button:active {
-    transform: scale(0.98);
-}
-
-/* Patient Data History Table */
-.patient-data-history {
-    width: 100%;
-    max-width: 1100px; /* Increased max-width for consistency */
-    margin-top: 40px;
-}
-
-.history-title {
-    font-size: 2rem; /* Increased title size */
-    font-weight: 600;
-    color: #333;
-    margin-bottom: 25px; /* Increased margin */
-}
-
-.history-table {
+.dhis2-table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
 }
 
-.history-table th,
-.history-table td {
-    padding: 15px; /* Increased padding for larger cells */
+.dhis2-table th,
+.dhis2-table td {
+    padding: 12px 15px;
     text-align: left;
+    border: 1px solid #e0e0e0;
+    font-size: 0.95rem;
 }
 
-.history-table th {
-    background-color: #3498db;
-    color: #fff;
+.dhis2-table th {
+    background-color: #003366;
+    color: #ffffff;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
 }
 
-.history-table td {
-    background-color: #f4f7fa;
+.dhis2-table tr:nth-child(even) {
+    background-color: #f9f9f9;
 }
 
-.history-table tr:nth-child(even) {
-    background-color: #fafafa;
+.dhis2-table tr:hover {
+    background-color: #f1f1f1;
 }
 
-.history-table td {
-    font-size: 1.1rem; /* Slightly increased font size for table content */
-    color: #555;
+.dhis2-table td {
+    color: #333333;
 }
 
-/* Responsiveness */
-@media (max-width: 768px) {
-    .patient-table {
-        font-size: 1rem; /* Slightly reduced font size for small screens */
+/* Footer Row */
+.dhis2-table tfoot {
+    background-color: #f7f7f7;
+    font-weight: bold;
+    text-align: right;
+}
+
+.dhis2-table tfoot td {
+    color: #004080;
+    font-size: 1rem;
+    padding: 10px;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .dhis2-table th,
+    .dhis2-table td {
+        font-size: 0.85rem;
+        padding: 10px;
     }
 
-    .patient-title {
-        font-size: 1.9rem; /* Adjusted title size for small screens */
+    .patient-history-header h1 {
+        font-size: 2rem;
     }
 
-    .enter-button {
-        width: 100%;
-        max-width: 250px; /* Increased max width for better button size */
+    .patient-history-header .subtitle {
+        font-size: 1rem;
     }
 }
->>>>>>> f5a837efc555a3158f1a3e6cf9522d7dd366a097
+
+@media screen and (max-width: 480px) {
+    .patient-history-header h1 {
+        font-size: 1.75rem;
+    }
+
+    .patient-history-header .subtitle {
+        font-size: 0.9rem;
+    }
+
+    .dhis2-table th,
+    .dhis2-table td {
+        font-size: 0.8rem;
+    }
+}
+
+/* NoticeBox Styling */
+.notice-box {
+    margin: 20px auto;
+    padding: 15px 20px;
+    background-color: #ffe5e5;
+    border-left: 4px solid #ff4d4d;
+    color: #990000;
+    font-size: 1rem;
+    text-align: left;
+    border-radius: 4px;
+}
+
+.notice-box h2 {
+    margin: 0 0 10px;
+    font-size: 1.25rem;
+    color: #990000;
+    font-weight: bold;
+}

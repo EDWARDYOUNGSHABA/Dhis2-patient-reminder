@@ -1,11 +1,6 @@
 import React, { useState } from 'react';
-<<<<<<< HEAD
 import PatientData from "../datareport/PatientData";
-
-=======
-import PatientData from "../datareport/PatientData.json";
 import './Messaging.css';
->>>>>>> ac23348e110ccf9359e74a6051e7a8cb5e6cb1ed
 const Messaging = () => {
     const [searchQuery, setSearchQuery] = useState('');
     const [selectedPatient, setSelectedPatient] = useState(null);
