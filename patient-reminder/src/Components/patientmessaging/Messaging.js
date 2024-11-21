@@ -1,6 +1,11 @@
 import React, { useState } from 'react';
+<<<<<<< HEAD
 import PatientData from "../datareport/PatientData";
 
+=======
+import PatientData from "../datareport/PatientData.json";
+import './Messaging.css';
+>>>>>>> ac23348e110ccf9359e74a6051e7a8cb5e6cb1ed
 const Messaging = () => {
     const [searchQuery, setSearchQuery] = useState('');
     const [selectedPatient, setSelectedPatient] = useState(null);
@@ -14,19 +19,19 @@ const Messaging = () => {
     };
 
     return (
-        <div className="flex flex-col items-center justify-center p-5 bg-gray-800 text-black min-h-screen">
-            <h2 id="header" className="text-2xl font-semibold mb-5">Remind Patients</h2>
+        <div className="messaging-container">
+            <h2 id="header" className="header">Remind Patients</h2>
 
             <input
                 type="text"
                 placeholder="Search by ID or Name"
                 value={searchQuery}
                 onChange={handleSearch}
-                className="w-full max-w-md p-2 mb-3 text-lg border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="search-input"
             />
 
             {selectedPatient && (
-                <div className="w-full max-w-md mb-3 p-3 bg-white rounded-md shadow-md">
+                <div className="patient-info">
                     <p><strong>ID:</strong> {selectedPatient.id}</p>
                     <p><strong>Name:</strong> {selectedPatient.name}</p>
                     <p><strong>Phone:</strong> {selectedPatient.phone}</p>
@@ -38,17 +43,17 @@ const Messaging = () => {
                 type="text"
                 placeholder="Phone Number"
                 value={selectedPatient ? selectedPatient.phone : ''}
-                className="w-full max-w-md p-2 mb-3 text-lg border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                 readOnly
+                className="phone-input"
             />
             <textarea
                 id="messageTextarea"
                 placeholder="Message"
-                className="w-full max-w-md p-2 mb-3 text-lg border border-gray-300 rounded-md h-24 resize-y focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="message-textarea"
             ></textarea>
             <button
                 id="sendButton"
-                className="w-full max-w-md p-2 mt-2 text-lg font-semibold text-white bg-blue-700 rounded-md hover:bg-blue-800 transition duration-300"
+                className="send-button"
             >
                 Send SMS
             </button>

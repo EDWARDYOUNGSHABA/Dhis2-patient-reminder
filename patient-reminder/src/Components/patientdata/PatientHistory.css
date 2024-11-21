@@ -1,3 +1,53 @@
+<<<<<<< HEAD
+.patient-container {
+    padding: 20px;
+  }
+  
+  .patient-title {
+    text-align: center;
+  }
+  
+  .table-container {
+    margin-top: 20px;
+  }
+  
+  .patient-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .patient-table th,
+  .patient-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .button-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+  }
+  
+  .enter-button {
+    background-color: #890d33cb; 
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .enter-button:hover {
+    background-color:#890d33cb;
+  }
+  
+  .enter-button:active {
+    background-color: #890d33cb;
+    transform: translateY(2px);
+  }
+  
+=======
 /* General Container Styles */
 .patient-container {
     display: flex;
@@ -158,3 +208,4 @@
         max-width: 250px; /* Increased max width for better button size */
     }
 }
+>>>>>>> f5a837efc555a3158f1a3e6cf9522d7dd366a097

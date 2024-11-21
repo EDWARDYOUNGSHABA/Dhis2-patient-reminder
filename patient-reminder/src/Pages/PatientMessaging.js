@@ -1,6 +1,6 @@
 import React from 'react';
 import Messaging from '../Components/patientmessaging/Messaging';
-import './Universal.css';
+/*import './Universal.css';*/
 function PatientMessaging() {
     return (
         <div>
