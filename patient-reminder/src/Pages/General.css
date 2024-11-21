@@ -5,6 +5,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  padding-top: 24px;
 }
 
 body {
@@ -13,11 +14,6 @@ body {
   color: black; /* Dark gray text for readability */
   line-height: 1.6;
   min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0 20px;
-  text-align: center; /* Text alignment for general page content */
 }
 
 /* Centralized Content */
@@ -26,8 +22,7 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  width: 100%;
-  max-width: 1000px; /* Set a max width to prevent too large content */
+  height: 100vh; /* Full viewport height */
   padding: 20px;
   text-align: center;
 }

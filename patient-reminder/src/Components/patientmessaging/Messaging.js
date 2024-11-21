@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import PatientData from "../datareport/PatientData.json";
+import PatientData from "../datareport/PatientData";
 
 const Messaging = () => {
     const [searchQuery, setSearchQuery] = useState('');

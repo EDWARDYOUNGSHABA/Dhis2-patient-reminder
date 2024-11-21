@@ -1,117 +1,83 @@
-import React, { useMemo } from 'react';
-import { useTable, useSortBy, usePagination } from 'react-table';
-import patientData from './PatientData.json';
+import React from 'react';
 import './Report.css';
+import { patientData } from './PatientData'; // Import the patient data
 
-const PatientReport = () => {
-  const data = useMemo(() => patientData, []);
+const Report = () => {
+    // Calculate additional data for the report
+    const totalPatients = patientData.length;
+    const maleCount = patientData.filter(patient => patient.gender === 'Male').length;
+    const femaleCount = patientData.filter(patient => patient.gender === 'Female').length;
 
-  const columns = useMemo(
-    () => [
-      { Header: 'ID', accessor: 'id' },
-      { Header: 'Name', accessor: 'name' },
-      { Header: 'Age', accessor: 'age' },
-      { Header: 'Gender', accessor: 'gender' },
-      { Header: 'Registration Date', accessor: 'registrationDate' },
-    ],
-    []
-  );
+    // Group by age ranges
+    const ageGroups = [
+        { range: '20-30', count: patientData.filter(p => p.age >= 20 && p.age < 30).length },
+        { range: '30-40', count: patientData.filter(p => p.age >= 30 && p.age < 40).length },
+        { range: '40-50', count: patientData.filter(p => p.age >= 40 && p.age < 50).length },
+        { range: '50-60', count: patientData.filter(p => p.age >= 50 && p.age < 60).length },
+        { range: '60+', count: patientData.filter(p => p.age >= 60).length },
+    ];
 
-  const {
-    getTableProps,
-    getTableBodyProps,
-    headerGroups,
-    page,
-    prepareRow,
-    canPreviousPage,
-    canNextPage,
-    pageOptions,
-    nextPage,
-    previousPage,
-    setPageSize,
-    state: { pageIndex, pageSize },
-  } = useTable(
-    { columns, data, initialState: { pageIndex: 0, pageSize: 5 } },
-    useSortBy,
-    usePagination
-  );
+    return (
+        <div className="report-container">
+            {/* Page Title Section */}
+            <header className="report-header">
+                <h1 className="report-title">Patient Data Report</h1>
+                <p className="report-subtitle">Comprehensive patient data with insights and trends</p>
+            </header>
 
-  return (
-    <div className="report-container">
-      <h2 className="report-header">Registered Patients</h2>
-      <p className="total-patients">Total Patients: {data.length}</p>
+            {/* Report Content Section */}
+            <section className="report-content">
+                <div className="overview-section">
+                    <h3>Overview</h3>
+                    <p>Total Patients: {totalPatients}</p>
+                    <p>Male Patients: {maleCount}</p>
+                    <p>Female Patients: {femaleCount}</p>
+                </div>
 
-      <div className="table-wrapper">
-        <table {...getTableProps()} className="report-table">
-          <thead>
-            {headerGroups.map(headerGroup => (
-              <tr {...headerGroup.getHeaderGroupProps()}>
-                {headerGroup.headers.map(column => (
-                  <th {...column.getHeaderProps(column.getSortByToggleProps())} className="table-header">
-                    {column.render('Header')}
-                    <span>
-                      {column.isSorted
-                        ? column.isSortedDesc
-                          ? ' 🔽'
-                          : ' 🔼'
-                        : ''}
-                    </span>
-                  </th>
-                ))}
-              </tr>
-            ))}
-          </thead>
-          <tbody {...getTableBodyProps()}>
-            {page.map(row => {
-              prepareRow(row);
-              return (
-                <tr {...row.getRowProps()} className="table-row">
-                  {row.cells.map(cell => (
-                    <td {...cell.getCellProps()} className="table-cell">{cell.render('Cell')}</td>
-                  ))}
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
-      </div>
+                {/* Age Group Breakdown */}
+                <div className="age-group-section">
+                    <h4>Age Group Breakdown</h4>
+                    <ul>
+                        {ageGroups.map(group => (
+                            <li key={group.range}>{group.range}: {group.count} patients</li>
+                        ))}
+                    </ul>
+                </div>
 
-      {/* Pagination Controls */}
-      <div className="pagination-container">
-        <button
-          onClick={() => previousPage()}
-          disabled={!canPreviousPage}
-          className="pagination-button"
-        >
-          Previous
-        </button>
-        <span className="pagination-info">
-          Page{' '}
-          <strong>
-            {pageIndex + 1} of {pageOptions.length}
-          </strong>{' '}
-        </span>
-        <button
-          onClick={() => nextPage()}
-          disabled={!canNextPage}
-          className="pagination-button"
-        >
-          Next
-        </button>
-        <select
-          value={pageSize}
-          onChange={e => setPageSize(Number(e.target.value))}
-          className="page-size-selector"
-        >
-          {[5, 10, 15, 20].map(size => (
-            <option key={size} value={size}>
-              Show {size}
-            </option>
-          ))}
-        </select>
-      </div>
-    </div>
-  );
+                {/* Detailed Patient Data Table */}
+                <div className="patient-table">
+                    <h4>Patient Details</h4>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Age</th>
+                                <th>Gender</th>
+                                <th>Registration Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {patientData.map(patient => (
+                                <tr key={patient.id}>
+                                    <td>{patient.id}</td>
+                                    <td>{patient.name}</td>
+                                    <td>{patient.age}</td>
+                                    <td>{patient.gender}</td>
+                                    <td>{patient.registrationDate}</td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            {/* Footer Section */}
+            <footer className="report-footer">
+                <p>&copy; 2024 DHIS2 Patient Reminder. All rights reserved.</p>
+            </footer>
+        </div>
+    );
 };
 
-export default PatientReport;
+export default Report;

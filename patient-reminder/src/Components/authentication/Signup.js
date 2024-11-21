@@ -8,28 +8,61 @@ const Signup = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
+    const [success, setSuccess] = useState('');
 
     const handleInputChange = (setter) => (event) => {
         setter(event.target.value);
     };
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
 
-        // Make sure all information is filled
+        // Validation
         if (!username || !sex || !department || !email || !password) {
             setError('All fields are required.');
             return;
         }
-
-        console.log('Form submitted with data:', { username, sex, department, email, password });
-
-        setUsername('');
-        setSex('');
-        setDepartment('');
-        setEmail('');
-        setPassword('');
         setError('');
+
+        // Payload for DHIS2 API
+        const payload = {
+            userCredentials: {
+                username: username,
+                password: password,
+            },
+            surname: department, // Assuming department maps to surname for simplicity
+            email: email,
+            gender: sex,
+        };
+
+        try {
+            const response = await fetch('https://data.research.dhis2.org/in5320/api/users', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: 'Basic ' + btoa('admin:district'), // Update with valid credentials
+                },
+                body: JSON.stringify(payload),
+            });
+
+            if (response.ok) {
+                const data = await response.json();
+                console.log('User created:', data);
+                setSuccess('User registered successfully!');
+                setUsername('');
+                setSex('');
+                setDepartment('');
+                setEmail('');
+                setPassword('');
+            } else {
+                const errorData = await response.json();
+                console.error('Error response:', errorData);
+                setError(`Failed to register user: ${errorData.message || 'Unknown error'}`);
+            }
+        } catch (error) {
+            console.error('Network or server error:', error);
+            setError('An error occurred while submitting the registration.');
+        }
     };
 
     return (
@@ -38,6 +71,7 @@ const Signup = () => {
             <p className="signup-description">Create your account to get started!</p>
 
             {error && <div className="error-message">{error}</div>}
+            {success && <div className="success-message">{success}</div>}
 
             <form onSubmit={handleSubmit} className="signup-form">
                 <label className="signup-label">Username</label>

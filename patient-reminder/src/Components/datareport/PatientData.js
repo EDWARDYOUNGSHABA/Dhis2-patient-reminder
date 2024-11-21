@@ -1,4 +1,5 @@
-[
+// patientData.js
+export const patientData = [
     { "id": "1", "name": "John Doe", "age": 45, "gender": "Male", "registrationDate": "2024-11-01" },
     { "id": "2", "name": "Jane Smith", "age": 38, "gender": "Female", "registrationDate": "2024-11-03" },
     { "id": "3", "name": "Alice Johnson", "age": 29, "gender": "Female", "registrationDate": "2024-11-05" },
@@ -19,4 +20,6 @@
     { "id": "18", "name": "Mark Green", "age": 48, "gender": "Male", "registrationDate": "2024-11-22" },
     { "id": "19", "name": "Sandra Baker", "age": 41, "gender": "Female", "registrationDate": "2024-11-23" },
     { "id": "20", "name": "Matthew Adams", "age": 46, "gender": "Male", "registrationDate": "2024-11-24" }
-]
+];
+
+export default patientData;
