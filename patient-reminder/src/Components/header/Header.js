@@ -3,6 +3,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import { FaHome } from "react-icons/fa";
 import './Header.css';
 
+import avatar from './images/avatar.png';
+
 function Header() {
     const [isServicesOpen, setIsServicesOpen] = useState(false);
     const [isProfileOpen, setIsProfileOpen] = useState(false);
@@ -80,10 +82,12 @@ function Header() {
                             <Link to="/patienthistory" onClick={closeAllDropdowns}>Patient History</Link>
                             <Link to="/registration" onClick={closeAllDropdowns}>Registration</Link>
                             <Link to="/messaging" onClick={closeAllDropdowns}>Messaging</Link>
+                            
                         </div>
                     )}
                 </div>
                 <Link to="/report" onClick={closeAllDropdowns}>Report</Link>
+                <Link to="/enrolment" onClick={closeAllDropdowns}>Enrolment</Link>
                 <Link to="/aboutus" onClick={closeAllDropdowns}>About Us</Link>
                 <Link to="/notification" onClick={closeAllDropdowns}>Notification</Link>
             </nav>
@@ -117,7 +121,7 @@ function Header() {
                     profileTimeout = setTimeout(() => setIsProfileOpen(false), closeDelay);
                 }}
             >
-                <img src="./asserts/images/fever.jpg" alt="Profile" className="profile-img" />
+                <img src={avatar} alt="Profile" className="profile-img" />
                 {isProfileOpen && (
                     <div className="profile-menu">
                         {!isAuthenticated ? (

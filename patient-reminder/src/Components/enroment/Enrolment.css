@@ -1,0 +1,96 @@
+/* General styles */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f7fc;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* Enrolment Container */
+  .enrol-container {
+    width: 100%;
+    max-width: 500px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  /* Heading */
+  h1 {
+    color: #333333;
+    font-size: 1.8em;
+    margin-bottom: 20px;
+  }
+  
+  /* Form Section */
+  .enrol-content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .input-section {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .input-section label {
+    font-weight: bold;
+    font-size: 0.9em;
+    color: #555555;
+  }
+  
+  /* Button */
+  button {
+    width: 100%;
+    padding: 12px;
+    font-size: 1em;
+    background-color: #0077cc;
+    color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+  }
+  
+  button:hover:enabled {
+    background-color: #005fa3;
+  }
+  
+  /* Feedback Section */
+  .feedback-section {
+    margin-top: 20px;
+  }
+  
+  .notice-box {
+    margin-top: 10px;
+  }
+  
+  /* Loading Text */
+  p {
+    font-size: 0.9em;
+    color: #999999;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .enrol-container {
+      padding: 20px;
+    }
+  
+    button {
+      font-size: 0.9em;
+    }
+  }
+  

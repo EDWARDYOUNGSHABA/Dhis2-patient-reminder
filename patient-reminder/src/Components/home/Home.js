@@ -1,11 +1,10 @@
 import React from "react";
-import { useNavigate } from "react-router-dom"; // Import navigation hook
+import { useNavigate } from "react-router-dom"; 
 import "./Home.css";
 
 const Home = () => {
-    const navigate = useNavigate(); // Initialize navigate function
+    const navigate = useNavigate(); 
 
-    // Function to handle navigation
     const handleNavigation = (path) => {
         navigate(path);
     };
@@ -13,7 +12,7 @@ const Home = () => {
     return (
         <div className="app-container">
                    
-            {/* Main Content */}
+
             <main className="main-content">
                 <h1 className="main-title">Welcome to DHIS2 Patient Reminder</h1>
                 <p className="main-description">
@@ -21,7 +20,7 @@ const Home = () => {
                 </p>
                 <button
                     className="get-started-button"
-                    onClick={() => handleNavigation("/registration")} // Navigate on button click
+                    onClick={() => handleNavigation("/registration")} 
                 >
                     Get Started
                 </button>
@@ -37,9 +36,9 @@ const Home = () => {
                         onClick={() => handleNavigation("/notification")}
                     />
                     <FeatureCard
-                        title="Patient Registration"
-                        description="Doctors can register patients."
-                        onClick={() => handleNavigation("/registration")}
+                        title="Patient Enerolment"
+                        description="Doctors can enrolment patients."
+                        onClick={() => handleNavigation("/enrolment")}
                     />
                     <FeatureCard
                         title="Patient History"
@@ -64,14 +63,13 @@ const Home = () => {
                 </div>
             </section>
 
-            {/* Footer */}
+
             <footer className="footer">
                 <p>&copy; 2024 DHIS2 Patient Reminder. All rights reserved.</p>
             </footer>
         </div>
     );
 };
-// Reusable Feature Card Component
 const FeatureCard = ({ title, description, onClick }) => (
     <div className="feature-card" onClick={onClick} style={{ cursor: "pointer" }}>
         <h3 className="feature-card-title">{title}</h3>

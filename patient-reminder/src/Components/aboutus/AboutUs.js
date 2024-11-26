@@ -57,10 +57,15 @@ const AboutUs = () => {
       {/* Contact Details Section */}
       <section className="contact-details">
         <h2>Contact Us</h2>
-        <p>Email: contact@healthcareapp.com</p>
-        <p>Phone: +1 (123) 456-7890</p>
-        <p>Address: 123 Health Street, Wellness City, USA</p>
+        <p>
+          Email: <a href="mailto:contact@healthcareapp.com">contact@healthcareapp.com</a>
+        </p>
+        <p>
+          Phone: <a href="tel:+26592000003">+265 99 200 9991</a>
+        </p>
+        <p>Address: ZOMBA , MALAWI</p>
       </section>
+
     </div>
   );
 };
