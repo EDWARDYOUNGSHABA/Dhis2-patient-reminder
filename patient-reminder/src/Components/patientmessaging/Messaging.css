@@ -1,74 +1,61 @@
-/* Styling for the SMS Form Container */
-.sms-container {
+ 
+.messaging-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   padding: 20px;
-  max-width: 500px;
-  margin: 50px auto;
-  background-color: #f9f9f9;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  font-family: Arial, sans-serif;
+  
+  color: black;
+  
 }
 
-/* Header Styling */
-.sms-container h2 {
-  text-align: center;
+.header {
+  font-size: 1.5em;
+  font-weight: 600;
   margin-bottom: 20px;
-  color: #333;
 }
 
-/* Input and TextArea Styling */
-.sms-container input,
-.sms-container textarea {
+.search-input, .phone-input, .message-textarea {
   width: 100%;
+  max-width: 400px;
   padding: 10px;
-  margin-bottom: 15px;
-  border: 1px solid #ccc;
+  margin-bottom: 12px;
+  font-size: 1.125rem;
+  border: 1px solid #D1D5DB;
   border-radius: 4px;
-  font-size: 14px;
-  resize: none;
-}
-
-/* Input and TextArea Focus State */
-.sms-container input:focus,
-.sms-container textarea:focus {
-  border-color: #1976d2;
   outline: none;
 }
 
-/* Button Styling */
-.sms-container button {
+.message-textarea {
+  min-height: 96px;
+  resize: vertical;
+}
+
+.send-button {
   width: 100%;
+  max-width: 400px;
   padding: 10px;
-  background-color: #1976d2;
+  font-size: 1.125rem;
+  font-weight: 600;
   color: white;
-  border: none;
+  background-color: #1D4ED8;
   border-radius: 4px;
-  font-size: 16px;
   cursor: pointer;
+  transition: background-color 0.3s;
+  border: none;
 }
 
-.sms-container button:hover {
-  background-color: #155b9a;
+.send-button:hover {
+  background-color: #3498db;
 }
 
-/* Response Message Styling */
-.sms-container .response-message {
-  margin-top: 20px;
-  padding: 10px;
+.patient-info {
+  width: 100%;
+  max-width: 400px;
+  margin-bottom: 12px;
+  padding: 12px;
+  background-color: white;
   border-radius: 4px;
-  text-align: center;
-  font-size: 14px;
-}
-
-.sms-container .response-message.success {
-  background-color: #d4edda;
-  color: #155724;
-  border: 1px solid #c3e6cb;
-}
-
-.sms-container .response-message.error {
-  background-color: #f8d7da;
-  color: #721c24;
-  border: 1px solid #f5c6cb;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
