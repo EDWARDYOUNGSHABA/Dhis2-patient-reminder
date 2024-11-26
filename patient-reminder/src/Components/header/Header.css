@@ -17,6 +17,8 @@
 .logo-section {
   display: flex;
   align-items: center;
+  padding-left: 25px;
+  
 }
 
 .logo-section .home-link {
@@ -45,6 +47,7 @@
   font-size: 1rem;
   font-weight: 500;
   transition: color 0.3s ease;
+  margin-top: -10px;
 }
 
 .nav-links a:hover,
@@ -137,6 +140,7 @@
   border-radius: 50%;
   object-fit: cover;
   margin-left: 20px;
+  
 }
 
 .profile-menu {
@@ -159,6 +163,7 @@
   color: #003366;
   font-size: 0.9rem;
   transition: background-color 0.3s ease;
+  color: #ffffff;
 }
 
 .profile-menu a:hover,

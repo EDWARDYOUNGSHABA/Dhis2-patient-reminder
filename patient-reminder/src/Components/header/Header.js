@@ -3,6 +3,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import { FaHome } from "react-icons/fa";
 import './Header.css';
 
+import avatar from './images/avatar.png';
+
 function Header() {
     const [isServicesOpen, setIsServicesOpen] = useState(false);
     const [isProfileOpen, setIsProfileOpen] = useState(false);
@@ -117,7 +119,7 @@ function Header() {
                     profileTimeout = setTimeout(() => setIsProfileOpen(false), closeDelay);
                 }}
             >
-                <img src="./asserts/images/fever.jpg" alt="Profile" className="profile-img" />
+                <img src={avatar} alt="Profile" className="profile-img" />
                 {isProfileOpen && (
                     <div className="profile-menu">
                         {!isAuthenticated ? (
