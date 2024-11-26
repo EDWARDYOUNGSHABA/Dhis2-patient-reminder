@@ -1,107 +1,212 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from "react";
+import { useDataQuery } from "@dhis2/app-runtime";
+import { registerPatient } from "./Api";
+import "./Registration.css";
 import {
-    ReactFinalForm,
-    InputFieldFF,
-    SingleSelectFieldFF,
-    Button,
-    CalendarInput,
-    hasValue,
-    composeValidators,
-} from '@dhis2/ui';
-import { useNavigate } from 'react-router-dom';
-import { onSubmit } from './Api'; // Import onSubmit function
+  Button,
+  NoticeBox,
+  CircularLoader,
+  Table,
+  TableHead,
+  TableBody,
+  TableRow,
+  TableCell,
+} from "@dhis2/ui";
 
-const options = [
-    { label: 'Male', value: 'Male' },
-    { label: 'Female', value: 'Female' },
-    { label: 'Other', value: 'Other' },
-];
-
-const validatePhone = (value) =>
-    /^[0-9]{10,15}$/.test(value) ? undefined : 'Invalid phone number';
+// Query to fetch organization units
+const orgUnitQuery = {
+  organisationUnits: {
+    resource: "organisationUnits.json",
+    params: {
+      level: 2,
+      fields: "id,name",
+      paging: false,
+    },
+  },
+};
 
 const Registration = () => {
-    const navigate = useNavigate();
-    const [enrollmentDate, setEnrollmentDate] = useState('');
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    dob: "",
+    gender: "",
+    phone: "",
+    address: "",
+    orgUnit: "",
+  });
 
-    const handleSubmit = (formData) => {
-        onSubmit(formData, enrollmentDate, navigate); // Pass form data to the onSubmit function
-    };
+  const [orgUnits, setOrgUnits] = useState([]);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [enrollmentSuccess, setEnrollmentSuccess] = useState(false);
 
-    return (
-        <ReactFinalForm.Form onSubmit={handleSubmit}>
-            {({ handleSubmit }) => (
-                <form onSubmit={handleSubmit} style={{ maxWidth: 600, margin: 'auto' }}>
-                    <h2 style={{ textAlign: 'center', marginBottom: '20px' }}>Registration Form</h2>
+  const { loading, error, data } = useDataQuery(orgUnitQuery);
 
-                    <ReactFinalForm.Field
-                        name="name"
-                        label="Name"
-                        component={InputFieldFF}
-                        validate={hasValue}
-                        required
-                    />
+  useEffect(() => {
+    if (data?.organisationUnits?.organisationUnits) {
+      setOrgUnits(data.organisationUnits.organisationUnits);
+    }
+  }, [data]);
 
-                    <ReactFinalForm.Field
-                        name="age"
-                        label="Age"
-                        component={InputFieldFF}
-                        type="number"
-                        validate={hasValue}
-                        required
-                    />
+  const handleChange = ({ target: { name, value } }) =>
+    setFormData((prev) => ({ ...prev, [name]: value }));
 
-                    <ReactFinalForm.Field
-                        name="sex"
-                        label="Sex"
-                        component={SingleSelectFieldFF}
-                        options={options}
-                        validate={hasValue}
-                        required
-                    />
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setEnrollmentSuccess(false);
 
-                    <ReactFinalForm.Field
-                        name="district"
-                        label="District"
-                        component={InputFieldFF}
-                        validate={hasValue}
-                        required
-                    />
+    try {
+      const response = await registerPatient(formData);
+      if (response.status === "OK") {
+        setEnrollmentSuccess(true);
+      }
+    } catch (err) {
+      console.error("Error registering patient:", err);
+      alert("Error registering patient. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
-                    <ReactFinalForm.Field
-                        name="diseaseType"
-                        label="Disease Type"
-                        component={InputFieldFF}
-                        validate={hasValue}
-                        required
-                    />
+  const renderLoadingState = () => (
+    <div className="loader">
+      <CircularLoader />
+      <p>Loading organization units...</p>
+    </div>
+  );
 
-                    <ReactFinalForm.Field
-                        name="phoneNumber"
-                        label="Phone Number"
-                        component={InputFieldFF}
-                        validate={composeValidators(hasValue, validatePhone)}
-                        required
-                    />
+  const renderErrorState = () => (
+    <div className="error">Error fetching organization units</div>
+  );
 
-                    <div style={{ margin: '20px 0' }}>
-                        <label>Enrollment Date</label>
-                        <CalendarInput
-                            value={enrollmentDate}
-                            onChange={(date) => setEnrollmentDate(date)}
-                            calendarPopup
-                        />
-                    </div>
+  const renderForm = () => (
+    <form onSubmit={handleSubmit} className="registration-form">
+      <input
+        type="text"
+        name="firstName"
+        placeholder="First Name"
+        value={formData.firstName}
+        onChange={handleChange}
+        required
+      />
+      <input
+        type="text"
+        name="lastName"
+        placeholder="Last Name"
+        value={formData.lastName}
+        onChange={handleChange}
+        required
+      />
+      <input
+        type="date"
+        name="dob"
+        placeholder="Date of Birth"
+        value={formData.dob}
+        onChange={handleChange}
+        required
+      />
+      <div className="gender-selection">
+        <label>
+          <input
+            type="radio"
+            name="gender"
+            value="Male"
+            checked={formData.gender === "Male"}
+            onChange={handleChange}
+            required
+          />
+          Male
+        </label>
+        <label>
+          <input
+            type="radio"
+            name="gender"
+            value="Female"
+            checked={formData.gender === "Female"}
+            onChange={handleChange}
+            required
+          />
+          Female
+        </label>
+      </div>
+      <input
+        type="tel"
+        name="phone"
+        placeholder="Phone Number"
+        value={formData.phone}
+        onChange={handleChange}
+        required
+      />
+      <input
+        type="text"
+        name="address"
+        placeholder="Address"
+        value={formData.address}
+        onChange={handleChange}
+      />
+      <select
+        name="orgUnit"
+        value={formData.orgUnit}
+        onChange={handleChange}
+        required
+      >
+        <option value="">Select Organization Unit</option>
+        {orgUnits.map(({ id, name }) => (
+          <option key={id} value={id}>
+            {name}
+          </option>
+        ))}
+      </select>
+      <div className="form-buttons">
+        <Button type="submit" disabled={isSubmitting}>
+          {isSubmitting ? "Registering..." : "Register"}
+        </Button>
+        <Button type="reset">Cancel</Button>
+      </div>
+    </form>
+  );
 
-                    <div style={{ display: 'flex', gap: '10px', marginTop: '20px' }}>
-                        <Button type="submit" primary>
-                            Register
-                        </Button>
-                    </div>
-                </form>
-            )}
-        </ReactFinalForm.Form>
-    );
+  const renderTable = () => (
+    <div className="org-unit-table">
+      <h3>Available Organization Units</h3>
+      <Table>
+        <TableHead>
+          <TableRow>
+            <TableCell>ID</TableCell>
+            <TableCell>Name</TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {orgUnits.map(({ id, name }) => (
+            <TableRow key={id}>
+              <TableCell>{id}</TableCell>
+              <TableCell>{name}</TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </div>
+  );
+
+  return (
+    <div className="registration-container">
+      <h2>Patient Registration</h2>
+      {loading && renderLoadingState()}
+      {error && renderErrorState()}
+      {!loading && !error && (
+        <>
+          {renderForm()}
+          {enrollmentSuccess && (
+            <NoticeBox title="Success" success>
+              Patient Registered Successfully!
+            </NoticeBox>
+          )}
+          {renderTable()}
+        </>
+      )}
+    </div>
+  );
 };
 
 export default Registration;
