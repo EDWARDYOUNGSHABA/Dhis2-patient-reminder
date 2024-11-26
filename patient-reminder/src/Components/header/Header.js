@@ -80,10 +80,12 @@ function Header() {
                             <Link to="/patienthistory" onClick={closeAllDropdowns}>Patient History</Link>
                             <Link to="/registration" onClick={closeAllDropdowns}>Registration</Link>
                             <Link to="/messaging" onClick={closeAllDropdowns}>Messaging</Link>
+                            
                         </div>
                     )}
                 </div>
                 <Link to="/report" onClick={closeAllDropdowns}>Report</Link>
+                <Link to="/enrolment" onClick={closeAllDropdowns}>Enrolment</Link>
                 <Link to="/aboutus" onClick={closeAllDropdowns}>About Us</Link>
                 <Link to="/notification" onClick={closeAllDropdowns}>Notification</Link>
             </nav>

@@ -37,9 +37,9 @@ const Home = () => {
                         onClick={() => handleNavigation("/notification")}
                     />
                     <FeatureCard
-                        title="Patient Registration"
-                        description="Doctors can register patients."
-                        onClick={() => handleNavigation("/registration")}
+                        title="Patient Enerolment"
+                        description="Doctors can enrolment patients."
+                        onClick={() => handleNavigation("/enrolment")}
                     />
                     <FeatureCard
                         title="Patient History"

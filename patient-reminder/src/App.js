@@ -10,7 +10,9 @@ import PatientMessaging from './Pages/PatientMessaging';
 import PatientRegistrationPage from './Pages/PatientRegistrationPage';
 import AboutUsPage from './Pages/AboutUsPage';
 import NotificationPage from './Pages/NotificationPage';
+import EnrolmentPage from './Pages/EnrolmentPage';
 import PrivateRoute from './Components/privaterouting/PrivateRoute';
+
 
 function App() {
   return (
@@ -81,6 +83,14 @@ function AppRoutes() {
           element={
             <PrivateRoute>
               <NotificationPage />
+            </PrivateRoute>
+          }
+        />
+         <Route
+          path="/enrolment"
+          element={
+            <PrivateRoute>
+              <EnrolmentPage />
             </PrivateRoute>
           }
         />

@@ -1,5 +1,5 @@
-import React from "react";
-import patientData from "../datareport/PatientData";
+import React, { useState, useEffect } from "react";
+import { fetchRegisteredPatients } from './Api';
 import {
     Table,
     TableBody,
@@ -8,11 +8,34 @@ import {
     TableRow,
     TableFoot,
     NoticeBox,
+    CircularLoader,
 } from "@dhis2/ui";
 
-import "./PatientHistory.css"; // Optional custom styling
+import "./PatientHistory.css"; 
 
 const PatientHistory = () => {
+    const [patientData, setPatientData] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+
+    useEffect(() => {
+        const orgUnitId = "PMa2VCrupOd";
+        const programId = "x5T8A6QtcP2";
+
+        const loadPatients = async () => {
+            try {
+                const data = await fetchRegisteredPatients(orgUnitId, programId);
+                setPatientData(data);
+            } catch (err) {
+                setError(err.message);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        loadPatients();
+    }, []);
+
     return (
         <div className="patient-history-wrapper">
             <header className="patient-history-header">
@@ -23,8 +46,15 @@ const PatientHistory = () => {
                 </p>
             </header>
 
-            {/* Display a notice if no data is available */}
-            {patientData.length === 0 ? (
+            {loading ? (
+                <div className="loading-wrapper">
+                    <CircularLoader />
+                </div>
+            ) : error ? (
+                <NoticeBox title="Error Fetching Data">
+                    {error}
+                </NoticeBox>
+            ) : patientData.length === 0 ? (
                 <NoticeBox title="No Patient Data">
                     No patients have been registered in the system yet.
                 </NoticeBox>
@@ -43,10 +73,10 @@ const PatientHistory = () => {
                         {patientData.map((patient) => (
                             <TableRow key={patient.id}>
                                 <TableCell>{patient.id}</TableCell>
-                                <TableCell>{patient.name}</TableCell>
-                                <TableCell>{patient.age}</TableCell>
-                                <TableCell>{patient.gender}</TableCell>
-                                <TableCell>{patient.registrationDate}</TableCell>
+                                <TableCell>{patient?.name || "N/A"}</TableCell>
+                                <TableCell>{patient?.age || "N/A"}</TableCell>
+                                <TableCell>{patient?.gender || "N/A"}</TableCell>
+                                <TableCell>{patient?.registrationDate || "N/A"}</TableCell>
                             </TableRow>
                         ))}
                     </TableBody>
