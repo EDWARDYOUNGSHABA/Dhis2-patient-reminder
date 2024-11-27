@@ -97,10 +97,4 @@ const Messaging = () => {
     );
 };
 
-<<<<<<< HEAD
 export default Messaging;
-
-
-=======
-export default Messaging;
->>>>>>> 6683b01b39940ab48f48c03f1de6d1e3d734e135
