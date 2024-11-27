@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Input, TextArea } from '@dhis2/ui';
+import PatientData from "../datareport/PatientData";
 import './Messaging.css';
 
 const Messaging = () => {
@@ -96,5 +96,10 @@ const Messaging = () => {
         </div>
     );
 };
+<<<<<<< HEAD
 
 export default Messaging;
+=======
+export default Messaging;
+
+>>>>>>> 06dbe7032392688db61c1141933380337276d60a

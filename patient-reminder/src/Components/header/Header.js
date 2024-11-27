@@ -5,6 +5,7 @@ import './Header.css';
 
 import avatar from './images/avatar.png';
 
+
 function Header() {
     const [isServicesOpen, setIsServicesOpen] = useState(false);
     const [isProfileOpen, setIsProfileOpen] = useState(false);
